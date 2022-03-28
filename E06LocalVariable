@@ -1,0 +1,58 @@
+package ex05method;
+
+public class E06LocalVariable
+{
+/*
+ 지역변수
+ 
+ */
+	public static void main(String[] args)
+	{
+		boolean scope = true;
+		/*
+		 main 지역에서 num을 선언하면 그보다 좁은 지역
+		 if문에서는 같은 이름의 변수를 선언할 수 없다.
+		 큰 지역에서 이미 선언되어 메모리에 상주하고 있기때문이다.
+		 
+		 */
+		//int num=9;
+		
+		/*
+		 main보다 좁은 지역인 if문의 블럭을 생성한 후
+		 변수 num을 선언한다.
+		 단 if문의 블럭과 else문의 블럭은 서로 다른 지역이므로
+		 동일한 이름의 변수를 선언할 수 있다.
+		 */
+		if(scope) {
+			int num = 1;
+			num++;
+			System.out.println("첫번쨰 if문지역: "+num);
+		}
+		else {
+			int num = 5;
+			System.out.println("첫번째 if문 else지역: "+ num);
+		}
+		/*
+		 if 문 블럭안의 num은 if문이 끝나는것과 동시에 소멸하므로
+		 아래에 num을 선언할 수 있다.
+		 */
+		int num = 100;
+		System.out.println("메소드지역: "+num);
+		
+		simplefunk();
+		
+		System.out.println("메소드 끝");
+		
+	}
+	/*
+	 main에서 선언한 변수 num이 메모리에 상주해있지만, simpleFunk메서드는
+	 서로 다른지역으로 정의되었으므로 같은 이름의 변수를 선언 할 수 있다.
+	 위 main 메서드의 if~else문의; 블럭도 같은 개념으로 변수를 선언한것이다.
+	 */
+	static void simplefunk() {
+		int num = 1000;
+		System.out.println("simple메소드 지역: "+num);
+		
+	}
+
+}
